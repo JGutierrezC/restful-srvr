@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$:.push File.expand_path("../../lib", __FILE__)
+require 'restful-srvr/api/srv_ctl'
+
+RestfulSrvr::API::SrvCtl.run(ARGV, File.basename(__FILE__))
