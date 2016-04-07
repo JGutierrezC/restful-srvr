@@ -12,8 +12,6 @@ module RestfulSrvr::API
     #   run the application without the rest gateway
     def initialize(registry, options = {})
       super(registry)
-      supervise_as(:cache_manager, RestfulSrvr::API::CacheManager)
-      supervise_as(:cache_builder, RestfulSrvr::API::CacheBuilder)
 
       unless options[:disable_http]
         require_relative 'rest_gateway'
@@ -26,7 +24,6 @@ module RestfulSrvr::API
     class << self
       extend Forwardable
       include RestfulSrvr::API::Logging
-      include RestfulSrvr::API::Mixin::Services
 
       attr_reader :start_time
       def_delegators :registry, :[], :[]=
@@ -141,7 +138,7 @@ module RestfulSrvr::API
         options = { disable_http: false, eager_build: false }.merge(options)
         configure(options)
         @instance = ApplicationSupervisor.new(registry, options)
-        cache_builder.async(:build_loop) if options[:eager_build]
+        #cache_builder.async(:build_loop) if options[:eager_build]
         @instance
       end
 
