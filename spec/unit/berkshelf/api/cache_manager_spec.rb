@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::CacheManager do
+describe RestfulSrvr::API::CacheManager do
   subject { described_class.new }
 
   describe "ClassMethods" do
@@ -11,7 +11,7 @@ describe Berkshelf::API::CacheManager do
 
       context "when a save file exists" do
         before do
-          @tempfile = Tempfile.new('berkshelf-api-rspec')
+          @tempfile = Tempfile.new('RestfulSrvr-api-rspec')
           described_class.stub(:cache_file) { @tempfile.path }
         end
         after { @tempfile.close(true) }
@@ -36,8 +36,8 @@ describe Berkshelf::API::CacheManager do
       it "starts and registers a cache manager it with the application" do
         described_class.start
 
-        expect(Berkshelf::API::Application[:cache_manager]).to be_a(described_class)
-        expect(Berkshelf::API::Application[:cache_manager]).to be_alive
+        expect(RestfulSrvr::API::Application[:cache_manager]).to be_a(described_class)
+        expect(RestfulSrvr::API::Application[:cache_manager]).to be_alive
       end
     end
   end
@@ -70,8 +70,8 @@ describe Berkshelf::API::CacheManager do
   end
 
   describe "#diff" do
-    let(:cookbook_one) { Berkshelf::API::RemoteCookbook.new("ruby", "1.2.3", "supermarket", nil, 1) }
-    let(:cookbook_two) { Berkshelf::API::RemoteCookbook.new("elixir", "2.0.0", "supermarket", nil, 1) }
+    let(:cookbook_one) { RestfulSrvr::API::RemoteCookbook.new("ruby", "1.2.3", "supermarket", nil, 1) }
+    let(:cookbook_two) { RestfulSrvr::API::RemoteCookbook.new("elixir", "2.0.0", "supermarket", nil, 1) }
     let(:comparison) { Array.new }
 
     before do
@@ -86,7 +86,7 @@ describe Berkshelf::API::CacheManager do
     end
 
     context "when there are more than one worker endpoints" do
-      let(:new_cookbook) { Berkshelf::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 2) }
+      let(:new_cookbook) { RestfulSrvr::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 2) }
       let(:comparison) { [ cookbook_one, cookbook_two, new_cookbook ] }
 
       before do
@@ -111,7 +111,7 @@ describe Berkshelf::API::CacheManager do
     end
 
     context "when there are created and deleted cookbooks" do
-      let(:new_cookbook) { Berkshelf::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 1) }
+      let(:new_cookbook) { RestfulSrvr::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 1) }
       let(:comparison) { [ cookbook_one, new_cookbook ] }
 
       it "should return created and deleted cookbooks" do
@@ -121,7 +121,7 @@ describe Berkshelf::API::CacheManager do
     end
 
     context "when there are only created cookbooks" do
-      let(:new_cookbook) { Berkshelf::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 1) }
+      let(:new_cookbook) { RestfulSrvr::API::RemoteCookbook.new("ruby", "3.0.0", "supermarket", nil, 1) }
       let(:comparison) { [ cookbook_one, cookbook_two, new_cookbook ] }
 
       it "should return only created cookbooks" do

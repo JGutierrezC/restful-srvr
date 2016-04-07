@@ -1,27 +1,27 @@
 require 'spec_helper'
-require 'berkshelf/api/rest_gateway'
+require 'restful-srvr/api/rest_gateway'
 
-describe Berkshelf::API::Mixin::Services do
+describe RestfulSrvr::API::Mixin::Services do
   let(:includer) do
-    Class.new { include Berkshelf::API::Mixin::Services }.new
+    Class.new { include RestfulSrvr::API::Mixin::Services }.new
   end
 
   describe "#cache_builder" do
     subject { includer.cache_builder }
 
     context "when the CacheBuilder is running" do
-      before { Berkshelf::API::CacheBuilder.start }
+      before { RestfulSrvr::API::CacheBuilder.start }
 
       it "returns the running instance of CacheBuilder" do
-        expect(subject).to be_a(Berkshelf::API::CacheBuilder)
+        expect(subject).to be_a(RestfulSrvr::API::CacheBuilder)
       end
     end
 
     context "when the CacheBuilder is not running" do
-      before { Berkshelf::API::CacheBuilder.stop }
+      before { RestfulSrvr::API::CacheBuilder.stop }
 
       it "raises a NotStartedError" do
-        expect { subject }.to raise_error(Berkshelf::API::NotStartedError)
+        expect { subject }.to raise_error(RestfulSrvr::API::NotStartedError)
       end
     end
   end
@@ -30,18 +30,18 @@ describe Berkshelf::API::Mixin::Services do
     subject { includer.cache_manager }
 
     context "when the CacheManager is running" do
-      before { Berkshelf::API::CacheManager.start }
+      before { RestfulSrvr::API::CacheManager.start }
 
       it "returns the running instance of CacheManager" do
-        expect(subject).to be_a(Berkshelf::API::CacheManager)
+        expect(subject).to be_a(RestfulSrvr::API::CacheManager)
       end
     end
 
     context "when the CacheManager is not running" do
-      before { Berkshelf::API::CacheManager.stop }
+      before { RestfulSrvr::API::CacheManager.stop }
 
       it "raises a NotStartedError" do
-        expect { subject }.to raise_error(Berkshelf::API::NotStartedError)
+        expect { subject }.to raise_error(RestfulSrvr::API::NotStartedError)
       end
     end
   end
@@ -50,18 +50,18 @@ describe Berkshelf::API::Mixin::Services do
     subject { includer.rest_gateway }
 
     context "when the RESTGateway is running" do
-      before { Berkshelf::API::RESTGateway.start }
+      before { RestfulSrvr::API::RESTGateway.start }
 
       it "returns the running instance of RESTGateway" do
-        expect(subject).to be_a(Berkshelf::API::RESTGateway)
+        expect(subject).to be_a(RestfulSrvr::API::RESTGateway)
       end
     end
 
     context "when the RESTGateway is not running" do
-      before { Berkshelf::API::RESTGateway.stop }
+      before { RestfulSrvr::API::RESTGateway.stop }
 
       it "raises a NotStartedError" do
-        expect { subject }.to raise_error(Berkshelf::API::NotStartedError)
+        expect { subject }.to raise_error(RestfulSrvr::API::NotStartedError)
       end
     end
   end

@@ -4,7 +4,7 @@ gemspec
 
 group :development do
   gem 'berkflow', github: "reset/berkflow"
-  gem 'berkshelf', github: "berkshelf/berkshelf"
+  # gem 'RestfulSrvr', github: "restful-srvr/RestfulSrvr"
   gem 'thor',      '~> 0.18'
   gem 'coolline'
   gem 'fuubar', '~> 1.1'

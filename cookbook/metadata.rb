@@ -1,14 +1,14 @@
 lib = File.expand_path('../../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'berkshelf/api/version'
+require 'restful-srvr/api/version'
 
-name             "berkshelf-api-server"
+name             "RestfulSrvr-api-server"
 maintainer       "Jamie Winsor"
 maintainer_email "jamie@vialstudios.com"
 license          "Apache 2.0"
-description      "Installs/Configures a berkshelf-api server"
-long_description "Installs/Configures a berkshelf-api server"
-version          Berkshelf::API::VERSION
+description      "Installs/Configures a RestfulSrvr-api server"
+long_description "Installs/Configures a RestfulSrvr-api server"
+version          RestfulSrvr::API::VERSION
 
 %w{ redhat centos ubuntu }.each do |os|
   supports os

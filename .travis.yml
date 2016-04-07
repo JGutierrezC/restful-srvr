@@ -14,12 +14,12 @@ addons:
 notifications:
   irc:
     channels:
-      - "irc.freenode.org#berkshelf"
+      - "irc.freenode.org#RestfulSrvr"
     skip_join: true
     use_notice: true
 env: USE_SYSTEM_GECODE=1
 bundler_args: --without development --jobs 7
 before_script:
-  - git config --global user.email "ci@berkshelf.com"
-  - git config --global user.name "Berkshelf"
+  - git config --global user.email "ci@RestfulSrvr.com"
+  - git config --global user.name "RestfulSrvr"
 script: bundle exec rspec --color --format progress

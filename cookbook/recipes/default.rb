@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: berkshelf-api-server
+# Cookbook Name:: RestfulSrvr-api-server
 # Recipe:: default
 #
 # Copyright (C) 2013-2014 Jamie Winsor
@@ -17,5 +17,5 @@
 # limitations under the License.
 #
 
-include_recipe "berkshelf-api-server::app"
-include_recipe "berkshelf-api-server::http_proxy"
+include_recipe "RestfulSrvr-api-server::app"
+include_recipe "RestfulSrvr-api-server::http_proxy"

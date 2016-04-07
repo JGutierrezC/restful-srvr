@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::Logging do
+describe RestfulSrvr::API::Logging do
   describe "ClassMethods" do
     subject { described_class }
 

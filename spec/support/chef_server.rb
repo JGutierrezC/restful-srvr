@@ -1,6 +1,6 @@
 require 'chef_zero/server'
 
-module Berkshelf
+module RestfulSrvr
   module RSpec
     module ChefServer
       class << self

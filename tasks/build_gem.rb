@@ -7,17 +7,17 @@ class BuildGem < Thor
   include Thor::RakeCompat
   Bundler::GemHelper.install_tasks
 
-  desc "build", "Build berkshelf-api-#{Berkshelf::API::VERSION}.gem into the pkg directory"
+  desc "build", "Build RestfulSrvr-api-#{RestfulSrvr::API::VERSION}.gem into the pkg directory"
   def build
     Rake::Task["build"].execute
   end
 
-  desc "install", "Build and install berkshelf-api-#{Berkshelf::API::VERSION}.gem into system gems"
+  desc "install", "Build and install RestfulSrvr-api-#{RestfulSrvr::API::VERSION}.gem into system gems"
   def install
     Rake::Task["install"].execute
   end
 
-  desc "release", "Create tag v#{Berkshelf::API::VERSION} and build and push berkshelf-api-#{Berkshelf::API::VERSION}.gem to Rubygems"
+  desc "release", "Create tag v#{RestfulSrvr::API::VERSION} and build and push RestfulSrvr-api-#{RestfulSrvr::API::VERSION}.gem to Rubygems"
   def release
     Rake::Task["release"].execute
   end

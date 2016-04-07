@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: berkshelf-api-server
+# Cookbook Name:: RestfulSrvr-api-server
 # Recipe:: http_proxy
 #
 # Copyright (C) 2013-2014 Jamie Winsor

@@ -31,7 +31,7 @@
 
 * Bug fixes
   * API server will now be configured to run as API user instead of root
-  * Fix issue where Berkshelf API user's home directory was not created
+  * Fix issue where RestfulSrvr API user's home directory was not created
 
 * Backwards incompatible changes
   * The Opscode cache builder was removed - the old community site is no longer a valid endpoint to cache
@@ -41,7 +41,7 @@
 * Enhancements
   * Always return JSON to native HTTP clients
   * Listen host can now be passed to cli with the `-h` flag
-  * berkshelf-api user will now be created as a system user
+  * RestfulSrvr-api user will now be created as a system user
   * Update many dependent gems
 
 * Bug fixes
@@ -49,7 +49,7 @@
   * Gracefully handle results from the community site which are empty
 
 * Backwards incompatible changes
-  * Renamed cookbook from `berkshelf-api` to `berkshelf-api-server`
+  * Renamed cookbook from `RestfulSrvr-api` to `RestfulSrvr-api-server`
 
 # 1.3.1
 

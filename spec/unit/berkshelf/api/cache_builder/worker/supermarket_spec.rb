@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-module Berkshelf
+module RestfulSrvr
   module API
     describe CacheBuilder::Worker::Supermarket do
       describe '.worker_type' do

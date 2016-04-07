@@ -67,7 +67,7 @@ Procfile
 */.hg/*
 */.svn/*
 
-# Berkshelf #
+# RestfulSrvr #
 #############
 cookbooks/*
 tmp

@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Berkshelf::API::Endpoint::V1 do
+describe RestfulSrvr::API::Endpoint::V1 do
   include Rack::Test::Methods
-  include Berkshelf::API::Mixin::Services
+  include RestfulSrvr::API::Mixin::Services
 
   let(:app) { described_class.new }
   let(:cache_warm) { false }
   let(:rack_env) { Hash.new }
 
   before do
-    Berkshelf::API::CacheManager.start
+    RestfulSrvr::API::CacheManager.start
     cache_manager.set_warmed if cache_warm
   end
 
@@ -74,7 +74,7 @@ describe Berkshelf::API::Endpoint::V1 do
 
   describe "GET /status" do
     before do
-      Berkshelf::API::Application.stub(:start_time) { Time.at(0) }
+      RestfulSrvr::API::Application.stub(:start_time) { Time.at(0) }
       Time.stub(:now) { Time.at(100) }
       get '/status'
     end
@@ -89,7 +89,7 @@ describe Berkshelf::API::Endpoint::V1 do
       it 'has the right body' do
         status = {
           status:  'ok',
-          version: Berkshelf::API::VERSION,
+          version: RestfulSrvr::API::VERSION,
           cache_status: 'ok',
           uptime: 100.0,
         }.to_json
@@ -108,7 +108,7 @@ describe Berkshelf::API::Endpoint::V1 do
       it 'has the right body' do
         status = {
           status:  'ok',
-          version: Berkshelf::API::VERSION,
+          version: RestfulSrvr::API::VERSION,
           cache_status: 'warming',
           uptime: 100.0,
         }.to_json

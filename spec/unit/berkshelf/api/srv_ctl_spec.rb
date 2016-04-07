@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::SrvCtl do
+describe RestfulSrvr::API::SrvCtl do
   describe "ClassMethods" do
     describe "::parse_options" do
       let(:args) { Array.new }

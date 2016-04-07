@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::CacheBuilder::Worker::ChefServer do
+describe RestfulSrvr::API::CacheBuilder::Worker::ChefServer do
   describe '.worker_type' do
     it 'is chef_server' do
       expect(described_class.worker_type).to eq('chef_server')
@@ -28,7 +28,7 @@ describe Berkshelf::API::CacheBuilder::Worker::ChefServer do
 
     it "returns an array of RemoteCookbooks" do
       subject.cookbooks.each do |cookbook|
-        expect(cookbook).to be_a(Berkshelf::API::RemoteCookbook)
+        expect(cookbook).to be_a(RestfulSrvr::API::RemoteCookbook)
       end
     end
 

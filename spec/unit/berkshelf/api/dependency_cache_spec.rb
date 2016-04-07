@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 def remote_cookbook(name, version, location_type = 'supermarket', location_path = 'https://supermarket.getchef.com', priority = 1, info = {})
-  Berkshelf::API::RemoteCookbook.new(name, version, location_type, location_path, priority, info)
+  RestfulSrvr::API::RemoteCookbook.new(name, version, location_type, location_path, priority, info)
 end
 
-describe Berkshelf::API::DependencyCache do
+describe RestfulSrvr::API::DependencyCache do
   describe "ClassMethods" do
     describe "::from_file" do
       let(:filepath) { @tempfile.path }
-      before { @tempfile = Tempfile.new('berkshelf-api-rspec') }
+      before { @tempfile = Tempfile.new('RestfulSrvr-api-rspec') }
       after  { @tempfile.close(true) }
 
       subject { described_class.from_file(filepath) }
@@ -28,7 +28,7 @@ describe Berkshelf::API::DependencyCache do
         let(:filepath) { nil }
 
         it "raises a SaveNotFoundError" do
-          expect { subject }.to raise_error(Berkshelf::API::SaveNotFoundError)
+          expect { subject }.to raise_error(RestfulSrvr::API::SaveNotFoundError)
         end
       end
 
@@ -40,7 +40,7 @@ describe Berkshelf::API::DependencyCache do
         end
 
         it "raises an InvalidSaveError" do
-          expect { subject }.to raise_error(Berkshelf::API::InvalidSaveError)
+          expect { subject }.to raise_error(RestfulSrvr::API::InvalidSaveError)
         end
       end
     end

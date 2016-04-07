@@ -1,11 +1,11 @@
 DEPENDENCIES
-  berkshelf-api-server
+  RestfulSrvr-api-server
     path: .
     metadata: true
 
 GRAPH
   apt (2.3.8)
-  berkshelf-api-server (2.1.1)
+  RestfulSrvr-api-server (2.1.1)
     build-essential (>= 2.0.2)
     github (~> 0.3)
     libarchive (~> 0.4)

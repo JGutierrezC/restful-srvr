@@ -10,7 +10,7 @@ Spork.prefork do
   Dir[File.join(File.expand_path("../../spec/support/**/*.rb", __FILE__))].each { |f| require f }
 
   RSpec.configure do |config|
-    config.include Berkshelf::RSpec::ChefServer
+    config.include RestfulSrvr::RSpec::ChefServer
 
     config.expect_with :rspec do |c|
       c.syntax = :expect
@@ -21,13 +21,13 @@ Spork.prefork do
     config.filter_run focus: true
     config.run_all_when_everything_filtered = true
 
-    config.before(:suite) { Berkshelf::RSpec::ChefServer.start }
-    config.before(:all) { Berkshelf::API::Logging.init(location: '/dev/null') }
+    config.before(:suite) { RestfulSrvr::RSpec::ChefServer.start }
+    config.before(:all) { RestfulSrvr::API::Logging.init(location: '/dev/null') }
 
     config.before do
       Celluloid.shutdown
       Celluloid.boot
-      ENV['BERKSHELF_API_PATH'] = tmp_path.join('api-server').to_s
+      ENV['RestfulSrvr_API_PATH'] = tmp_path.join('api-server').to_s
       clean_tmp_path
     end
   end
@@ -51,5 +51,5 @@ Spork.prefork do
 end
 
 Spork.each_run do
-  require 'berkshelf/api'
+  require 'restful-srvr/api'
 end

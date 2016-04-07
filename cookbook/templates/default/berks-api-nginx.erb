@@ -1,10 +1,10 @@
 upstream berks_api {
-  server 127.0.0.1:<%= node[:berkshelf_api][:port] %> fail_timeout=0;
+  server 127.0.0.1:<%= node[:RestfulSrvr_api][:port] %> fail_timeout=0;
 }
 
 server {
-  listen <%= node[:berkshelf_api][:proxy_port] %>;
-  server_name <%= node[:berkshelf_api][:host] %>;
+  listen <%= node[:RestfulSrvr_api][:proxy_port] %>;
+  server_name <%= node[:RestfulSrvr_api][:host] %>;
 
   location / {
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;

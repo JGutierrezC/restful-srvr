@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'berkshelf/api/rest_gateway'
+require 'restful-srvr/api/rest_gateway'
 
-module Berkshelf
+module RestfulSrvr
   module API
     describe RESTGateway do
       let(:options) { {} }

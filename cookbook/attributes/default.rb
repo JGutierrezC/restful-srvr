@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: berkshelf-api-server
+# Cookbook Name:: RestfulSrvr-api-server
 # Attribute:: default
 #
 # Copyright (C) 2013-2014 Jamie Winsor
@@ -17,17 +17,17 @@
 # limitations under the License.
 #
 
-default[:berkshelf_api][:repo]           = "berkshelf/berkshelf-api"
-default[:berkshelf_api][:token]          = nil
-default[:berkshelf_api][:release]        = "v#{Berkshelf::API::Chef.cookbook_version(run_context)}"
-default[:berkshelf_api][:owner]          = "berkshelf"
-default[:berkshelf_api][:group]          = "berkshelf"
-default[:berkshelf_api][:home]           = "/etc/berkshelf/api-server"
-default[:berkshelf_api][:deploy_path]    = "/opt/berkshelf-api/#{node[:berkshelf_api][:release]}"
-default[:berkshelf_api][:port]           = 26200
-default[:berkshelf_api][:proxy_port]     = 80
-default[:berkshelf_api][:host]           = node[:fqdn]
-default[:berkshelf_api][:config_path]    = "#{node[:berkshelf_api][:home]}/config.json"
-default[:berkshelf_api][:config]         = {
-  home_path: node[:berkshelf_api][:home]
+default[:RestfulSrvr_api][:repo]           = "restful-srvr/RestfulSrvr-api"
+default[:RestfulSrvr_api][:token]          = nil
+default[:RestfulSrvr_api][:release]        = "v#{RestfulSrvr::API::Chef.cookbook_version(run_context)}"
+default[:RestfulSrvr_api][:owner]          = "RestfulSrvr"
+default[:RestfulSrvr_api][:group]          = "RestfulSrvr"
+default[:RestfulSrvr_api][:home]           = "/etc/restful-srvr/api-server"
+default[:RestfulSrvr_api][:deploy_path]    = "/opt/RestfulSrvr-api/#{node[:RestfulSrvr_api][:release]}"
+default[:RestfulSrvr_api][:port]           = 26200
+default[:RestfulSrvr_api][:proxy_port]     = 80
+default[:RestfulSrvr_api][:host]           = node[:fqdn]
+default[:RestfulSrvr_api][:config_path]    = "#{node[:RestfulSrvr_api][:home]}/config.json"
+default[:RestfulSrvr_api][:config]         = {
+  home_path: node[:RestfulSrvr_api][:home]
 }

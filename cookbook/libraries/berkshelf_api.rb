@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: berkshelf-api-server
-# Libraries:: berkshelf_api
+# Cookbook Name:: RestfulSrvr-api-server
+# Libraries:: RestfulSrvr_api
 #
 # Copyright (C) 2013-2014 Jamie Winsor
 #
@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-module Berkshelf
+module RestfulSrvr
   module API
     module Chef
       class << self
@@ -27,7 +27,7 @@ module Berkshelf
         #
         # @return [String]
         def cookbook_version(context)
-          context.cookbook_collection["berkshelf-api-server"].version
+          context.cookbook_collection["RestfulSrvr-api-server"].version
         end
       end
     end

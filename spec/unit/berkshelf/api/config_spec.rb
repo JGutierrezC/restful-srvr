@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::Config do
+describe RestfulSrvr::API::Config do
   describe "ClassMethods" do
     describe "::default_path" do
       it "returns a String" do

@@ -1,10 +1,10 @@
 require 'spec_helper'
 
-describe Berkshelf::API::CacheBuilder::Worker do
+describe RestfulSrvr::API::CacheBuilder::Worker do
   describe "ClassMethods" do
     describe "::[]" do
       it "returns the class of the registered worker" do
-        expect(described_class["supermarket"]).to eql(Berkshelf::API::CacheBuilder::Worker::Supermarket)
+        expect(described_class["supermarket"]).to eql(RestfulSrvr::API::CacheBuilder::Worker::Supermarket)
       end
     end
 
@@ -26,14 +26,14 @@ describe Berkshelf::API::CacheBuilder::Worker do
   end
 end
 
-describe Berkshelf::API::CacheBuilder::Worker::Base do
+describe RestfulSrvr::API::CacheBuilder::Worker::Base do
   describe "ClassMethods" do
     describe "::worker_type" do
       let(:klass) { Class.new(described_class) }
 
       it "registers the worker type and class to Worker.types" do
         klass.worker_type("rspec")
-        expect(Berkshelf::API::CacheBuilder::Worker.types).to include("rspec")
+        expect(RestfulSrvr::API::CacheBuilder::Worker.types).to include("rspec")
       end
     end
   end

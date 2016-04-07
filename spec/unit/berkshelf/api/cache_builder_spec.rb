@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe Berkshelf::API::CacheBuilder do
+describe RestfulSrvr::API::CacheBuilder do
 
-  before { Berkshelf::API::CacheManager.start }
+  before { RestfulSrvr::API::CacheManager.start }
   let(:instance) { described_class.new }
 
   describe "#build" do
@@ -67,8 +67,8 @@ describe Berkshelf::API::CacheBuilder do
       end
 
       before do
-        Berkshelf::API::Application.config.stub(:endpoints).and_return(endpoint_array)
-        Berkshelf::API::CacheBuilder::Worker.stub(:[]).and_return(dummy_endpoint_klass, dummy_endpoint_klass)
+        RestfulSrvr::API::Application.config.stub(:endpoints).and_return(endpoint_array)
+        RestfulSrvr::API::CacheBuilder::Worker.stub(:[]).and_return(dummy_endpoint_klass, dummy_endpoint_klass)
       end
 
       it "has two workers" do

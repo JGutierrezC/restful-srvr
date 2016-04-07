@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: berkshelf-api-server
+# Cookbook Name:: RestfulSrvr-api-server
 # Recipe:: app
 #
 # Copyright (C) 2013-2014 Jamie Winsor
@@ -22,48 +22,48 @@ include_recipe "runit"
 
 chef_gem "bundler"
 
-group node[:berkshelf_api][:group]
+group node[:RestfulSrvr_api][:group]
 
-user node[:berkshelf_api][:owner] do
-  gid node[:berkshelf_api][:group]
-  home node[:berkshelf_api][:home]
+user node[:RestfulSrvr_api][:owner] do
+  gid node[:RestfulSrvr_api][:group]
+  home node[:RestfulSrvr_api][:home]
   system true
 end
 
-directory node[:berkshelf_api][:home] do
-  owner node[:berkshelf_api][:owner]
-  group node[:berkshelf_api][:group]
+directory node[:RestfulSrvr_api][:home] do
+  owner node[:RestfulSrvr_api][:owner]
+  group node[:RestfulSrvr_api][:group]
   recursive true
 end
 
-file node[:berkshelf_api][:config_path] do
-  content JSON.generate(node[:berkshelf_api][:config].to_hash)
+file node[:RestfulSrvr_api][:config_path] do
+  content JSON.generate(node[:RestfulSrvr_api][:config].to_hash)
 end
 
-asset = github_asset "berkshelf-api.tar.gz" do
-  repo node[:berkshelf_api][:repo]
-  release node[:berkshelf_api][:release]
-  github_token node[:berkshelf_api][:token] unless node[:berkshelf_api][:token].nil?
+asset = github_asset "RestfulSrvr-api.tar.gz" do
+  repo node[:RestfulSrvr_api][:repo]
+  release node[:RestfulSrvr_api][:release]
+  github_token node[:RestfulSrvr_api][:token] unless node[:RestfulSrvr_api][:token].nil?
 end
 
-libarchive_file "berkshelf-api.tar.gz" do
+libarchive_file "RestfulSrvr-api.tar.gz" do
   path asset.asset_path
-  extract_to node[:berkshelf_api][:deploy_path]
+  extract_to node[:RestfulSrvr_api][:deploy_path]
   extract_options :no_overwrite
-  owner node[:berkshelf_api][:owner]
-  group node[:berkshelf_api][:group]
+  owner node[:RestfulSrvr_api][:owner]
+  group node[:RestfulSrvr_api][:group]
 
   action :extract
   notifies :restart, "runit_service[berks-api]"
   only_if { ::File.exist?(asset.asset_path) }
 end
 
-execute "berkshelf-api-bundle-install" do
-  user node[:berkshelf_api][:owner]
-  group node[:berkshelf_api][:group]
-  cwd node[:berkshelf_api][:deploy_path]
+execute "RestfulSrvr-api-bundle-install" do
+  user node[:RestfulSrvr_api][:owner]
+  group node[:RestfulSrvr_api][:group]
+  cwd node[:RestfulSrvr_api][:deploy_path]
   command "/opt/chef/embedded/bin/bundle install --deployment --without development test"
-  not_if "cd #{node[:berkshelf_api][:deploy_path]} && /opt/chef/embedded/bin/bundle check"
+  not_if "cd #{node[:RestfulSrvr_api][:deploy_path]} && /opt/chef/embedded/bin/bundle check"
 end
 
 runit_service "berks-api" do

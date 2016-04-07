@@ -1,16 +1,16 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'berkshelf/api/version'
+require 'restful-srvr/api/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "berkshelf-api"
-  spec.version       = Berkshelf::API::VERSION
+  spec.name          = "RestfulSrvr-api"
+  spec.version       = RestfulSrvr::API::VERSION
   spec.authors       = ["Jamie Winsor", "Andrew Garson"]
   spec.email         = ["jamie@vialstudios.com", "agarson@riotgames"]
-  spec.description   = %q{Berkshelf dependency API server}
+  spec.description   = %q{RestfulSrvr dependency API server}
   spec.summary       = %q{A server which indexes cookbooks from various sources and hosts it over a REST API}
-  spec.homepage      = "https://github.com/berkshelf/berkshelf-api"
+  spec.homepage      = "https://github.com/restful-srvr/RestfulSrvr-api"
   spec.license       = "Apache 2.0"
 
   spec.files         = Dir['CHANGELOG.md', 'README.md', 'LICENSE', 'lib/**/*']
@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   # There is a grape 0.15 available, but it doesn't work correctly with
   # grape-msgpack; It causes an error like this when you `require "grape-msgpack"`:
   #
-  #   /home/travis/build/berkshelf/berkshelf/vendor/bundle/ruby/2.0.0/gems/grape-msgpack-0.1.2/lib/grape/msgpack.rb:39:in `<top (required)>': uninitialized constant Grape::Formatter::Base (NameError)
+  #   /home/travis/build/restful-srvr/restful-srvr/vendor/bundle/ruby/2.0.0/gems/grape-msgpack-0.1.2/lib/grape/msgpack.rb:39:in `<top (required)>': uninitialized constant Grape::Formatter::Base (NameError)
   #
   spec.add_dependency 'grape',          '~> 0.14.0'
   spec.add_dependency 'grape-msgpack',  '~> 0.1'

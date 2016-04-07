@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::CacheBuilder::Worker::FileStore do
+describe RestfulSrvr::API::CacheBuilder::Worker::FileStore do
   describe '.worker_type' do
     it 'is file_store' do
       expect(described_class.worker_type).to eq('file_store')
@@ -20,7 +20,7 @@ describe Berkshelf::API::CacheBuilder::Worker::FileStore do
 
     it "returns an array of RemoteCookbooks" do
       subject.cookbooks.each do |cookbook|
-        expect(cookbook).to be_a(Berkshelf::API::RemoteCookbook)
+        expect(cookbook).to be_a(RestfulSrvr::API::RemoteCookbook)
       end
     end
 

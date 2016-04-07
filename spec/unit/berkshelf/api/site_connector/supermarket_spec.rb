@@ -1,15 +1,15 @@
 require 'spec_helper'
 
-describe Berkshelf::API::SiteConnector::Supermarket do
+describe RestfulSrvr::API::SiteConnector::Supermarket do
   let(:url) { 'https://example.com' }
   let(:json) do
     <<-EOH.gsub(/^ {6}/, '')
       {
-        "berkshelf": {
+        "RestfulSrvr": {
           "0.1.0": {
             "location_type": "supermarket",
             "location_path": "#{url}",
-            "download_url": "#{url}/cookbooks/berkshelf/versions/0.1.0/download",
+            "download_url": "#{url}/cookbooks/restful-srvr/versions/0.1.0/download",
             "dependencies": {
               "ruby": ">= 0.0.0"
             }
@@ -17,7 +17,7 @@ describe Berkshelf::API::SiteConnector::Supermarket do
           "0.2.0": {
             "location_type": "supermarket",
             "location_path": "#{url}",
-            "download_url": "#{url}/cookbooks/berkshelf/versions/0.2.0/download",
+            "download_url": "#{url}/cookbooks/restful-srvr/versions/0.2.0/download",
             "dependencies": {
               "ruby": ">= 0.0.0"
             }
@@ -44,7 +44,7 @@ describe Berkshelf::API::SiteConnector::Supermarket do
 
     it 'parses the response as JSON' do
       expect(subject.universe).to be_a(Hash)
-      expect(subject.universe).to have_key('berkshelf')
+      expect(subject.universe).to have_key('RestfulSrvr')
     end
 
     context 'when the server does not respond' do

@@ -23,11 +23,11 @@ Install the latest version of [Bundler](http://gembundler.com)
 
 Clone the project
 
-    $ git clone git://github.com/berkshelf/berkshelf-api.git
+    $ git clone git://github.com/restful-srvr/RestfulSrvr-api.git
 
 and run:
 
-    $ cd berkshelf
+    $ cd RestfulSrvr
     $ bundle install
 
 Bundler will install all gems and their dependencies required for testing and developing.

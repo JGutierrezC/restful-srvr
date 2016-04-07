@@ -5,7 +5,7 @@ $:.push File.expand_path("../tasks", __FILE__)
 require 'bundler'
 require 'bundler/setup'
 require 'thor'
-require 'berkshelf-api'
+require 'RestfulSrvr-api'
 require 'octokit'
 require 'berkflow/thor_tasks'
 require 'build_gem'
@@ -73,7 +73,7 @@ class Default < Thor
     end
 
     say "Uploading #{File.basename(archive_out)} to Github..."
-    github_client.upload_asset(release[:url], archive_out, name: "berkshelf-api.tar.gz",
+    github_client.upload_asset(release[:url], archive_out, name: "RestfulSrvr-api.tar.gz",
       content_type: "application/x-tar")
     invoke Berkflow::ThorTasks, "release", [], berksfile: File.join(PROJECT_DIR, "cookbook", "Berksfile")
   end
@@ -81,7 +81,7 @@ class Default < Thor
   private
 
     def archive_out
-      File.join(PKG_DIR, "berkshelf-api-#{version}.tar.gz")
+      File.join(PKG_DIR, "RestfulSrvr-api-#{version}.tar.gz")
     end
 
     def github_client
@@ -98,6 +98,6 @@ class Default < Thor
     end
 
     def version
-      "v#{Berkshelf::API::VERSION}"
+      "v#{RestfulSrvr::API::VERSION}"
     end
 end

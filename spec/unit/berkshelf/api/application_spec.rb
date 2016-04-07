@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Berkshelf::API::Application do
+describe RestfulSrvr::API::Application do
   describe "ClassMethods" do
     describe '.registry' do
       it 'returns a Celluloid::Registry' do
@@ -19,7 +19,7 @@ describe Berkshelf::API::Application do
         before { options[:config_file] = filepath }
 
         it "sets the configuration from the contents of the file" do
-          generated = Berkshelf::API::Config.new(filepath)
+          generated = RestfulSrvr::API::Config.new(filepath)
           generated.endpoints = [ { what: "this" } ]
           generated.save
           configure
@@ -29,14 +29,14 @@ describe Berkshelf::API::Application do
 
         context "if the file cannot be found or loaded" do
           it "raises a ConfigNotFoundError" do
-            expect { configure }.to raise_error(Berkshelf::API::ConfigNotFoundError)
+            expect { configure }.to raise_error(RestfulSrvr::API::ConfigNotFoundError)
           end
         end
       end
     end
 
     describe "::run!" do
-      include Berkshelf::API::Mixin::Services
+      include RestfulSrvr::API::Mixin::Services
 
       let(:options) { { log_location: '/dev/null' } }
       subject(:run) { described_class.run!(options) }
@@ -45,7 +45,7 @@ describe Berkshelf::API::Application do
         it "does not start the REST Gateway" do
           options[:disable_http] = true
           run
-          expect { rest_gateway }.to raise_error(Berkshelf::API::NotStartedError)
+          expect { rest_gateway }.to raise_error(RestfulSrvr::API::NotStartedError)
         end
       end
     end

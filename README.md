@@ -1,6 +1,6 @@
-# Berkshelf::API
-[![Gem Version](https://badge.fury.io/rb/berkshelf-api.png)](http://badge.fury.io/rb/berkshelf-api)
-[![Build Status](https://secure.travis-ci.org/berkshelf/berkshelf-api.png?branch=master)](http://travis-ci.org/berkshelf/berkshelf-api)
+# RestfulSrvr::API
+[![Gem Version](https://badge.fury.io/rb/RestfulSrvr-api.png)](http://badge.fury.io/rb/RestfulSrvr-api)
+[![Build Status](https://secure.travis-ci.org/restful-srvr/RestfulSrvr-api.png?branch=master)](http://travis-ci.org/restful-srvr/RestfulSrvr-api)
 
 A server which indexes cookbooks from various sources and hosts it over a REST API
 
@@ -12,9 +12,9 @@ The API server can be installed in two ways; from a Chef Cookbook (recommended) 
 
 #### Basic
 
-1. Select a [release](https://github.com/berkshelf/berkshelf-api/releases) and download its cookbooks artifact (`cookbooks.tar.gz`).
+1. Select a [release](https://github.com/restful-srvr/RestfulSrvr-api/releases) and download its cookbooks artifact (`cookbooks.tar.gz`).
 2. Upload the cookbooks to your Chef Server if you're using Chef Client or just give them to Chef Solo if that's your thing.
-3. Add "recipe[berkshelf-api-server::default]" to your node's run_list and run Chef.
+3. Add "recipe[RestfulSrvr-api-server::default]" to your node's run_list and run Chef.
 
 #### Express
 
@@ -30,29 +30,29 @@ Bootstrap a server into that environment
 
 Install the cookbooks into your environment
 
-    $ blo in https://github.com/berkshelf/berkshelf-api/releases/download/v1.3.1/cookbooks.tar.gz
+    $ blo in https://github.com/restful-srvr/RestfulSrvr-api/releases/download/v1.3.1/cookbooks.tar.gz
 
 Add the recipe to your new node's run_list
 
-    $ knife node run_list add i-c8cd9ac1 "recipe[berkshelf-api-server::default]"
+    $ knife node run_list add i-c8cd9ac1 "recipe[RestfulSrvr-api-server::default]"
 
 Edit the environment to configure the API server
 
     $ knife environment edit berks-api-production
 
-And add your configuration to the `node[:berkshelf_api][:config]` attribute
+And add your configuration to the `node[:RestfulSrvr_api][:config]` attribute
 
 ```json
 "default_attributes": {
-  "berkshelf_api": {
+  "RestfulSrvr_api": {
     "config": {
       "endpoints": [
         {
           "type": "chef_server",
           "options": {
             "url": "https://api.opscode.com/organizations/vialstudios",
-            "client_key": "/etc/berkshelf/api-server/client.pem",
-            "client_name": "berkshelf"
+            "client_key": "/etc/restful-srvr/api-server/client.pem",
+            "client_name": "RestfulSrvr"
           }
         }
       ],
@@ -67,36 +67,36 @@ Options:
 
   * build_interval - the number of seconds before it refreshes from the endpoints.
   * endpoints - an array of endpoints to cache
-  * home_path - data directory for the berkshelf-api server
+  * home_path - data directory for the RestfulSrvr-api server
 
-> See configuration endpoints below for a complete list of supported endpoints, and the [api cookbook readme](https://github.com/berkshelf/berkshelf-api/tree/master/cookbook) for all configuration options.
+> See configuration endpoints below for a complete list of supported endpoints, and the [api cookbook readme](https://github.com/restful-srvr/RestfulSrvr-api/tree/master/cookbook) for all configuration options.
 
-Update the machine you bootstrapped to the latest version of Berkshelf-API
+Update the machine you bootstrapped to the latest version of RestfulSrvr-API
 
-    $ blo up berks-api-production berkshelf-api-server latest
+    $ blo up berks-api-production RestfulSrvr-api-server latest
 
 ### Gem install
 
-    $ gem install berkshelf-api
+    $ gem install RestfulSrvr-api
 
 ## Running the server
 
     $ berks-api
     I, [2014-02-21T12:05:07.639699 #43671]  INFO -- : Cache Manager starting...
-    I, [2014-02-21T12:05:07.639883 #43671]  INFO -- : Loading save from /Users/reset/.berkshelf/api-server/cerch
+    I, [2014-02-21T12:05:07.639883 #43671]  INFO -- : Loading save from /Users/reset/.restful-srvr/api-server/cerch
     I, [2014-02-21T12:05:07.640462 #43671]  INFO -- : Cache contains 0 items
     I, [2014-02-21T12:05:07.641021 #43671]  INFO -- : Cache Builder starting...
     I, [2014-02-21T12:05:07.723779 #43671]  INFO -- : REST Gateway listening on 0.0.0.0:26200
 
 ## Supported Platforms
 
-Berkshelf-API is tested on Ruby 1.9.3, 2.0.0, and JRuby 1.7+.
+RestfulSrvr-API is tested on Ruby 1.9.3, 2.0.0, and JRuby 1.7+.
 
 Ruby 1.9 mode is required on all interpreters.
 
 ## Configuring Endpoints
 
-You may configure the endpoints to index by editing the JSON configuration file (default: `#{ENV['HOME']}/.berkshelf/api-server/config.json`).
+You may configure the endpoints to index by editing the JSON configuration file (default: `#{ENV['HOME']}/.restful-srvr/api-server/config.json`).
 
 ### Supermarket Community Site
 
@@ -137,8 +137,8 @@ Please note: this is unnecessary. You may point your Berksfile at "https://your-
       "type": "chef_server",
       "options": {
         "url": "https://api.opscode.com/organizations/vialstudios",
-        "client_name": "berkshelf",
-        "client_key": "/etc/berkshelf/api-server/client.pem"
+        "client_name": "RestfulSrvr",
+        "client_key": "/etc/restful-srvr/api-server/client.pem"
       }
     }
   ]
@@ -189,12 +189,12 @@ A local directory containing cookbooks.
 
 ## Getting Help
 
-* If you have an issue: report it on the [issue tracker](https://github.com/berkshelf/berkshelf/issues)
-* If you have a question: visit the #chef or #berkshelf channel on irc.freenode.net
+* If you have an issue: report it on the [issue tracker](https://github.com/restful-srvr/restful-srvr/issues)
+* If you have a question: visit the #chef or #RestfulSrvr channel on irc.freenode.net
 
 # Authors and Contributors
 
 * Jamie Winsor (<jamie@vialstudios.com>)
 * Andrew Garson (<agarson@riotgames.com>)
 
-Thank you to all of our [Contributors](https://github.com/berkshelf/berkshelf-api/graphs/contributors), testers, and users.
+Thank you to all of our [Contributors](https://github.com/restful-srvr/RestfulSrvr-api/graphs/contributors), testers, and users.
